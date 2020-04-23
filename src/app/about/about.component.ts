@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MissionsService} from '../missions.service';
 
 @Component({
   selector: 'app-about',
@@ -6,33 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  http: any;
-  route: any;
-  launchesService: any;
+  
+  
+  constructor( 
+    private missionservice: MissionsService) { }
 
-  constructor() { }
-
-  launch;
-  public Rocket()
-  {
-    this.http.get('https://api.spacexdata.com/v3/history');
-  }
+  corporation;
+  rocket;
 
   ngOnInit(): void{
-   this.route.params.subscribe(params => {
+   this.missionservice.getdetails().subscribe(response => {
 
-    console.log(params);
-    const flightNumber = params.flightNumber;
-
-    this.launchesService.getSingleLaunch(flightNumber).subscribe(response => {
-
-      console.log(response);
-      this.launch = response;
-    })
+    setTimeout(() => {
+      
+      this.corporation = response;
+    }, 1000);
+    });
 
 
-   });
+      this.missionservice.getRocket("starship").subscribe(response2 => {
+            console.log(response2);
+            this.rocket = response2;
 
-  }
+      });
+
+  };
 
 }

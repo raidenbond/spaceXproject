@@ -11,32 +11,14 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'spaceXproject pass between components';
 
-  parentData = ' obtaining child data';
+  //parentData = ' obtaining child data';
 
   childData: string;
+  year = new Date().getFullYear();
  
   captureEmittedData(emittedData){
     console.log(emittedData);
     this.childData = emittedData;
   }
-  
-  infor(){
-
-     alert('https://docs.spacexdata.com/?version=latest');
-     
-
-  }
-
-
-  constructor(private http: HttpClient){}
-
-  public Rocket()
-  {
-    this.http.get('https://api.spacexdata.com/v3/rockets');
-  }
-
-  public Rocket2(){
-
-    this.http.get('https://api.spacexdata.com/v3/rockets/falcon9');
-  }
+ 
 }

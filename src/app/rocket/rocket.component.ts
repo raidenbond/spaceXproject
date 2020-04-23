@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { LauncheService } from '../launche.service';
+
 import { ActivatedRoute } from '@angular/router';
+import { MissionsService } from '../missions.service';
 
 @Component({
   selector: 'app-rocket',
@@ -11,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RocketComponent implements OnInit {
  
   splashImg: string='/assets/space.jpg';
-  constructor(private http: HttpClient, private launchesService: LauncheService,
+  constructor(private missionservice: MissionsService,
     private route: ActivatedRoute,) {
    
     
@@ -19,27 +20,25 @@ export class RocketComponent implements OnInit {
 
    }
 
-   launch;
+   rocket;
 
-  public Rocket()
-  {
-    this.http.get('https://api.spacexdata.com/v3/rockets');
-  }
+  
 
   ngOnInit(): void{
    this.route.params.subscribe(params => {
 
     console.log(params);
-    const flightNumber = params.flightNumber;
+    const flightnumber = params.flightnumber;
 
-    this.launchesService.getSingleLaunch(flightNumber).subscribe(response => {
+    this.missionservice.getRocket(flightnumber).subscribe(response => {
 
-      console.log(response);
-      this.launch = response;
+      setTimeout(() => {
+        
+        console.log(response);
+        this.rocket 
+      }, 1000);
     })
-
-
-   });
+  });
 
   }
 

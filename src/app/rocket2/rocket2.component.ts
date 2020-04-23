@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { LauncheService } from '../launche.service';
-import {HttpClient} from '@angular/common/http';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { MissionsService } from '../missions.service';
 
 @Component({
   selector: 'app-rocket2',
@@ -9,32 +9,29 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./rocket2.component.css']
 })
 export class Rocket2Component implements OnInit {
+ 
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  splashImg: string='/assets/space.jpg';
   
 
-  constructor( private launchesService: LauncheService,
-    private route: ActivatedRoute,private http: HttpClient) { }
+  constructor( private missionservice: MissionsService) { 
 
-  launch;
-
-  public Rocket()
-  {
-    this.http.get('https://api.spacexdata.com/v3/rockets/falcon9');
+    console.log(this.splashImg);
   }
 
+  rocket2;
 
-
+  
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => {
+    this.missionservice.getRocket2().subscribe(response => {
 
-      console.log(params);
-      const flightNumber = params.flightNumber;
-  
-      this.launchesService.getSingleLaunch(flightNumber).subscribe(response => {
-  
-        console.log(response);
-        this.launch = response;
-      })
+      setTimeout(() => {
+
+        this.rocket2 = response;
+        
+      }, 1000);
   
   
      });

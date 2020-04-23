@@ -1,11 +1,22 @@
-<a routerLink="">back </a>
+<div *ngIf= "corporation; else showLoading " class="container">
+    <mat-card-header>
 
-<div *ngIf="about ">
- <h2 class="text-center"></h2>
- <div class="container"></div>
-  <p>Flight Name: {{ about.flight_name }}</p>
-  <p >Founder: {{ launch.founder}}</p>
-  <p>Valuation: {{ launch.flight_Valution}}</p>
-  <p>headquarters: {{launch.headquarters}} </p>
-  <p>summary : </p>
+        <mat-card-title>{{corporation.name}}</mat-card-title>
+          <mat-card-subtitle>Founder: {{corporation.founder}}</mat-card-subtitle>
+          <mat-card-title>Valuation: ${{corporation.valuation}}</mat-card-title>
+           <mat-card-title>Headquarters: {{ corporation.headquarters.address}}, {{corporation.headquarters.city}}</mat-card-title>
+       
+    </mat-card-header>
+    
+     <mat-card-content class=cardlleft>
+         <p>{{ corporation.summary}}</p>
+        <img mat-card-image src= {{rocket.splashImg}} alt="Photo of the rocket" *ngIf="rocket">
+
+     </mat-card-content>
 </div>
+
+<ng-template #showLoading>
+    <div class="loadingSpinner">
+      <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </div>
+</ng-template>

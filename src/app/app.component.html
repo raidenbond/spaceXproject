@@ -1,34 +1,8 @@
-
-   
-
- <h1 class= "mainHeading">{{ title }}</h1>
-
- <div class="actions">
-
-   
-   
-  
-    <router-outlet></router-outlet>
-
-
- 
-
-<button mat-raised-button color="accent">refresh</button>
-
- <h2 class= "secondheading">welcome</h2>
- <div>
-    <button (click)="infor()">click for about</button>
-    <button class="btn btn-primary" (click)="Rocket()" >AllRockets</button>
-    <button class="btn btn-secondary" (click)=Rocket2()>one</button>
- </div>
-
- <h3>{{ title }}</h3>
- <p>{{ description }}</p>
- <p>{{ id }}</p>
-
-<p>{{ childData }}</p>
-<app-about></app-about>
- <app-home></app-home>
- <app-launch>  </app-launch>
- <app-rocket></app-rocket>
- <app-rocket2></app-rocket2>
+<h1 class="mainHeading">{{ title }}</h1>
+<app-header [dataFromApp]=year ></app-header>
+<div class="content">
+   <button mat-raised-button color="accent">refresh</button>
+  <router-outlet></router-outlet>
+  Data emitted from footer component: {{ childData}}
+  <app-footer (dataEmitter)= "captureEmittedData($event)"></app-footer>
+</div>

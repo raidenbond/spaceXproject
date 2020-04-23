@@ -1,0 +1,60 @@
+.toolbar{
+
+
+    font-family: Arial;
+    font-size: 15px;
+    height: 70px;
+    margin: -9px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #1976c2;
+    color: white;
+    font-size: large;
+}
+
+.toolbar a {
+    color: blue;
+}
+
+.rcard{
+
+    border-radius: 4 px;
+    margin: 0 8px 16px;
+    padding :17px;
+    background-color: aliceblue;
+    color: white;
+    font-weight:600;
+    border: none;
+    min-width: 30%;
+    height: 16px;
+    width: 168px;
+    font-style: oblique;
+}
+
+.rcard.span{
+    margin-left: 70px;
+}
+
+.rcontent{
+    display: flex;
+    margin: 40px auto;
+    padding: 0 16px;
+
+    flex-direction:  column;
+    align-items: center;
+}
+
+
+svg#oldrocket{
+    width: 70px;
+    position: normal;
+    left: -10px;
+    top: -24px;
+}
+
+.menu1{
+   height: 50px;
+   width: 60px;
+   
+}

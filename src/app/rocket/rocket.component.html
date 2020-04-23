@@ -1,22 +1,35 @@
-<a routerLink="">single rocket page</a>
-<div *ngIf="rocket">
-<h2 class="text-center">{{ rocket.mission_name}}</h2>
-<div class="container">
-  <p>Description: {{ rocket.description}} </p>
-  <p>First Flight: {{rocket.firstflight}} </p>
-  <p>Country: {{rocket.country}}</p>
-  <p>Height: {{rocket.height}}</p>
-  <p>Diameter: {{rocket.diameter}}</p>
-  <p>Mass: {{rocket.mass}}</p>
 
+<div *ngIf="rocket; else showLoading" class="container">
 
-  <div class="splash">
+<mat-card class=small-card>
+     <mat-card-header>
+            <mat-card-title>{{ rocket.rocketname }}</mat-card-title>
+             <mat-card-subtitle>{{ rocket.description}}</mat-card-subtitle>
+    
+            </mat-card-header>
+         <img mat-card-image src={{rocket.splashImg}} alt="Photo of rocket">
+          <mat-card-content class= cardleft>
 
-    <img src="splashImg" alt="Cow Splash" class="img-fluid">
+            <p>Description: {{ rocket.description}} </p>
+            <p>First Flight: {{rocket.firstflight}} </p>
+            <p>Country: {{rocket.country}}</p>
+            <p>Height: {{rocket.height}}</p>
+            <p>Diameter: {{rocket.diameter}}</p>
+            <p>Mass: {{rocket.mass}}</p>
 
-  </div>
+          </mat-card-content>
+
+    </mat-card>
+
 </div>
 
+<ng-template #showLoading>
+    <div class="loadingSpinner">
+          <mat-progress-spinner color="primary" mode="indeterminate">
+
+          </mat-progress-spinner>
+
+    </div>
 
 
-</div>
+</ng-template>
